@@ -294,6 +294,86 @@ body::after {
 	margin-top: 18px;
 }
 
+.nameForm {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: center;
+	margin-top: 14px;
+}
+
+.input {
+	flex: 1 1 260px;
+	min-width: 220px;
+	padding: 11px 14px;
+	border-radius: 999px;
+	border: 1px solid rgba(239, 232, 216, 0.18);
+	background: rgba(7, 10, 15, 0.5);
+	color: var(--fg);
+	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.42);
+	transition:
+		border-color 180ms ease,
+		box-shadow 180ms ease,
+		background 180ms ease;
+}
+
+.input::placeholder {
+	color: rgba(239, 232, 216, 0.45);
+}
+
+.input:focus-visible {
+	outline: none;
+	border-color: rgba(182, 255, 74, 0.42);
+	box-shadow:
+		0 0 0 4px rgba(182, 255, 74, 0.14),
+		0 18px 55px rgba(0, 0, 0, 0.55);
+}
+
+.nameTools {
+	margin-top: 10px;
+}
+
+.linkBtn {
+	appearance: none;
+	border: 0;
+	background: transparent;
+	color: rgba(239, 232, 216, 0.72);
+	padding: 6px 8px;
+	border-radius: 999px;
+	cursor: pointer;
+	transition:
+		color 180ms ease,
+		background 180ms ease,
+		transform 180ms ease;
+}
+
+.linkBtn:hover {
+	color: var(--fg);
+	background: rgba(239, 232, 216, 0.06);
+	transform: translateY(-1px);
+}
+
+.linkBtn:focus-visible {
+	outline: 2px solid rgba(182, 255, 74, 0.65);
+	outline-offset: 3px;
+}
+
+.nameAccent {
+	color: rgba(182, 255, 74, 0.95);
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
 /* Sections */
 .section {
 	margin-top: 34px;

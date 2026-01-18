@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import React from "react";
 
 type AnimatedHeroProps = {
 	kicker?: string;
@@ -18,6 +19,24 @@ export default function AnimatedHero({
 	subtitle = "A small page with big motion — crisp typography, bold color, and a cinematic load-in.",
 }: AnimatedHeroProps) {
 	const reduceMotion = useReducedMotion();
+	const storageKey = "my-next-js:name";
+
+	const [name, setName] = React.useState<string>("");
+	const [draft, setDraft] = React.useState<string>("");
+
+	React.useEffect(() => {
+		try {
+			const existing = window.localStorage.getItem(storageKey);
+			if (existing && existing.trim()) {
+				setName(existing.trim());
+				setDraft(existing.trim());
+			}
+		} catch {
+			// ignore storage failures
+		}
+	}, []);
+
+	const displayTitle = name ? `Hello, ${name}` : title;
 
 	const container = {
 		hidden: {},
@@ -62,16 +81,17 @@ export default function AnimatedHero({
 				</div>
 
 				<motion.h1
+					key={displayTitle}
 					className="heroTitle"
 					variants={container}
 					initial="hidden"
 					animate="show"
-					aria-label={title}>
+					aria-label={displayTitle}>
 					<span
 						className="heroTitleGlow"
 						aria-hidden
 					/>
-					{splitToCharacters(title).map((c, idx) => (
+					{splitToCharacters(displayTitle).map((c, idx) => (
 						<motion.span
 							key={`${c}-${idx}`}
 							className={
@@ -88,8 +108,72 @@ export default function AnimatedHero({
 				<p
 					className="heroSubtitle reveal"
 					style={{ ["--d" as never]: "220ms" }}>
-					{subtitle}
+					{name ?
+						<>
+							Welcome back,{" "}
+							<span className="nameAccent">{name}</span>.{" "}
+							{subtitle}
+						</>
+					:	subtitle}
 				</p>
+
+				{!name && (
+					<form
+						className="nameForm reveal"
+						style={{ ["--d" as never]: "300ms" }}
+						onSubmit={(e) => {
+							e.preventDefault();
+							const next = draft.trim().slice(0, 28);
+							if (!next) return;
+							setName(next);
+							try {
+								window.localStorage.setItem(storageKey, next);
+							} catch {
+								// ignore storage failures
+							}
+						}}>
+						<label
+							className="srOnly"
+							htmlFor="name">
+							Your name
+						</label>
+						<input
+							id="name"
+							className="input"
+							autoComplete="name"
+							inputMode="text"
+							placeholder="Type your name…"
+							value={draft}
+							onChange={(e) => setDraft(e.target.value)}
+						/>
+						<button
+							className="btn btnPrimary"
+							type="submit">
+							Continue
+						</button>
+					</form>
+				)}
+
+				{name && (
+					<div
+						className="nameTools reveal"
+						style={{ ["--d" as never]: "300ms" }}>
+						<button
+							type="button"
+							className="linkBtn"
+							onClick={() => {
+								setName("");
+								setDraft("");
+								try {
+									window.localStorage.removeItem(storageKey);
+								} catch {
+									// ignore
+								}
+							}}>
+							Not you? Reset name
+						</button>
+					</div>
+				)}
 
 				<div
 					className="heroCtas reveal"
