@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fragment_Mono, Fraunces } from "next/font/google";
+import { Fragment_Mono, Fraunces, Noto_Sans_Bengali } from "next/font/google";
 import React from "react";
 import "./globals.css";
 
@@ -13,6 +13,12 @@ const mono = Fragment_Mono({
 	subsets: ["latin"],
 	weight: ["400"],
 	variable: "--font-mono",
+});
+
+const bengali = Noto_Sans_Bengali({
+	subsets: ["bengali"],
+	weight: ["400", "700"],
+	variable: "--font-bn",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +37,7 @@ export default function RootLayout({
 			suppressHydrationWarning>
 			<body
 				suppressHydrationWarning
-				className={`${display.variable} ${mono.variable} antialiased`}>
+				className={`${display.variable} ${mono.variable} ${bengali.variable} antialiased`}>
 				{children}
 			</body>
 		</html>

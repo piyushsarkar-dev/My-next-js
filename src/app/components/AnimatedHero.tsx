@@ -9,7 +9,19 @@ type AnimatedHeroProps = {
 	subtitle?: string;
 };
 
-function splitToCharacters(text: string) {
+function splitToGraphemes(text: string) {
+	if (!text) return [];
+	// Fixes Bengali/emoji/combining marks being split incorrectly.
+	try {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const Seg = (Intl as any)?.Segmenter;
+		if (Seg) {
+			const segmenter = new Seg(undefined, { granularity: "grapheme" });
+			return Array.from(segmenter.segment(text), (s: { segment: string }) => s.segment);
+		}
+	} catch {
+		// ignore
+	}
 	return Array.from(text);
 }
 
@@ -91,18 +103,44 @@ export default function AnimatedHero({
 						className="heroTitleGlow"
 						aria-hidden
 					/>
-					{splitToCharacters(displayTitle).map((c, idx) => (
-						<motion.span
-							key={`${c}-${idx}`}
-							className={
-								c === " " ?
-									"heroChar heroCharSpace"
-								:	"heroChar"
-							}
-							variants={char}>
-							{c === " " ? "\u00A0" : c}
-						</motion.span>
-					))}
+					{name ? (
+						<>
+							{splitToGraphemes("Hello,").map((c, idx) => (
+								<motion.span
+									key={`hello-${c}-${idx}`}
+									className={c === " " ? "heroChar heroCharSpace" : "heroChar"}
+									variants={char}>
+									{c === " " ? "\u00A0" : c}
+								</motion.span>
+							))}
+							<motion.span
+								className="heroChar heroCharSpace"
+								variants={char}
+								aria-hidden
+							/>
+							{splitToGraphemes(name).map((c, idx) => (
+								<motion.span
+									key={`name-${c}-${idx}`}
+									className={
+										c === " " ?
+											"heroChar heroCharName heroCharSpace"
+									: 	"heroChar heroCharName"
+									}
+									variants={char}>
+									{c === " " ? "\u00A0" : c}
+								</motion.span>
+							))}
+						</>
+					) : (
+						splitToGraphemes(displayTitle).map((c, idx) => (
+							<motion.span
+								key={`${c}-${idx}`}
+								className={c === " " ? "heroChar heroCharSpace" : "heroChar"}
+								variants={char}>
+								{c === " " ? "\u00A0" : c}
+							</motion.span>
+						))
+					)}
 				</motion.h1>
 
 				<p
