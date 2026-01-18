@@ -280,7 +280,11 @@ body::after {
 .heroCharName {
 	font-family: var(--font-bn), var(--font-display), serif;
 	font-weight: 700;
-	background: linear-gradient(90deg, rgba(182, 255, 74, 1), rgba(74, 223, 255, 0.95));
+	background: linear-gradient(
+		90deg,
+		rgba(182, 255, 74, 1),
+		rgba(74, 223, 255, 0.95)
+	);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;

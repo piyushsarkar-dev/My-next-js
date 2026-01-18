@@ -17,7 +17,10 @@ function splitToGraphemes(text: string) {
 		const Seg = (Intl as any)?.Segmenter;
 		if (Seg) {
 			const segmenter = new Seg(undefined, { granularity: "grapheme" });
-			return Array.from(segmenter.segment(text), (s: { segment: string }) => s.segment);
+			return Array.from(
+				segmenter.segment(text),
+				(s: { segment: string }) => s.segment,
+			);
 		}
 	} catch {
 		// ignore
@@ -103,12 +106,16 @@ export default function AnimatedHero({
 						className="heroTitleGlow"
 						aria-hidden
 					/>
-					{name ? (
+					{name ?
 						<>
 							{splitToGraphemes("Hello,").map((c, idx) => (
 								<motion.span
 									key={`hello-${c}-${idx}`}
-									className={c === " " ? "heroChar heroCharSpace" : "heroChar"}
+									className={
+										c === " " ?
+											"heroChar heroCharSpace"
+										:	"heroChar"
+									}
 									variants={char}>
 									{c === " " ? "\u00A0" : c}
 								</motion.span>
@@ -124,23 +131,26 @@ export default function AnimatedHero({
 									className={
 										c === " " ?
 											"heroChar heroCharName heroCharSpace"
-									: 	"heroChar heroCharName"
+										:	"heroChar heroCharName"
 									}
 									variants={char}>
 									{c === " " ? "\u00A0" : c}
 								</motion.span>
 							))}
 						</>
-					) : (
-						splitToGraphemes(displayTitle).map((c, idx) => (
+					:	splitToGraphemes(displayTitle).map((c, idx) => (
 							<motion.span
 								key={`${c}-${idx}`}
-								className={c === " " ? "heroChar heroCharSpace" : "heroChar"}
+								className={
+									c === " " ?
+										"heroChar heroCharSpace"
+									:	"heroChar"
+								}
 								variants={char}>
 								{c === " " ? "\u00A0" : c}
 							</motion.span>
 						))
-					)}
+					}
 				</motion.h1>
 
 				<p

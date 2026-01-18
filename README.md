@@ -1,24 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## My-next-js
+
+An animated, typography-forward Next.js landing page with a personalized greeting.
+
+### Highlights
+
+- Cinematic hero load-in (staggered characters + blur → snap)
+- Name prompt: user enters a name and the page greets them (e.g. “Hello, Piyush”)
+- Name is stored in `localStorage` and can be reset from the UI
+- Bengali/combining-character friendly name rendering (grapheme segmentation)
+
+### Tech
+
+- Next.js (App Router)
+- Tailwind v4 (via `@import "tailwindcss"`)
+- Framer Motion
+- Fonts via `next/font/google` (Fraunces, Fragment Mono, Noto Sans Bengali)
 
 ## Getting Started
 
-First, run the development server:
+Install deps (first time only):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm.cmd install
 ```
+
+Run the development server:
+
+```bash
+npm.cmd run dev
+```
+
+If you're not on Windows PowerShell, `npm run dev` also works.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start editing:
+
+- Main page: `src/app/page.tsx`
+- Hero + name prompt logic: `src/app/components/AnimatedHero.tsx`
+- Theme + animations: `src/app/globals.css`
+
+### Name Greeting
+
+1. First visit shows a name input.
+2. After submit, the hero title becomes `Hello, <name>`.
+3. The name is saved in `localStorage` under the key `my-next-js:name`.
+4. Click “Not you? Reset name” to clear it.
+
+### Production Build
+
+```bash
+npm.cmd run build
+npm.cmd run start
+```
 
 ## Learn More
 
