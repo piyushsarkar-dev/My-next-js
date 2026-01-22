@@ -1,4 +1,4 @@
-## My-next-js
+## My-next-js Setup Page
 
 An animated, typography-forward Next.js landing page with a personalized greeting build with love and patience.
 
