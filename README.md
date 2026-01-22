@@ -1,6 +1,6 @@
 ## My-next-js
 
-An animated, typography-forward Next.js landing page with a personalized greeting.
+An animated, typography-forward Next.js landing page with a personalized greeting build with love and patience.
 
 ### Highlights
 
