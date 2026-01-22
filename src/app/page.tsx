@@ -121,7 +121,7 @@ export default function Page() {
 				className="footer reveal"
 				style={{ ["--d" as never]: "220ms" }}>
 				<span className="muted">
-					Built with Next.js + Tailwind + Motion
+					Built with love and patience Next.js + Tailwind + Motion
 				</span>
 				<span className="muted">Jan 2026</span>
 			</footer>
