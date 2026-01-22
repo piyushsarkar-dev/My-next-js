@@ -53,7 +53,7 @@ export default function Page() {
 							<h3 className="h3">Cinematic entrance</h3>
 							<p className="muted">
 								Hero letters arrive with blur → snap, while
-								sections follow with a soft lift.
+								sections follows with a soft lift.
 							</p>
 						</article>
 
