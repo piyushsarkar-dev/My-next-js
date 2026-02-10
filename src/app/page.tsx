@@ -54,7 +54,6 @@ export default function Page() {
                 with a soft lift.
               </p>
             </article>
-
             <article
               className="card reveal"
               style={{ ["--d" as never]: "220ms" }}>
