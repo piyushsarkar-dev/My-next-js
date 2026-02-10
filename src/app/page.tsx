@@ -29,7 +29,6 @@ export default function Page() {
       </header>
       <main className="main">
         <AnimatedHero />
-
         <section
           id="features"
           className="section">
