@@ -8,7 +8,6 @@ type AnimatedHeroProps = {
   title?: string;
   subtitle?: string;
 };
-
 function splitToGraphemes(text: string) {
   if (!text) return [];
   // Fixes Bengali/emoji/combining marks being split incorrectly.
