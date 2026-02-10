@@ -82,7 +82,6 @@ export default function Page() {
             </article>
           </div>
         </section>
-
         <section
           id="notes"
           className="section">
