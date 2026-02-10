@@ -8,7 +8,6 @@ const display = Fraunces({
   variable: "--font-display",
   style: ["normal", "italic"],
 });
-
 const mono = Fragment_Mono({
   subsets: ["latin"],
   weight: ["400"],
