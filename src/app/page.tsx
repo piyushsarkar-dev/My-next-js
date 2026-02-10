@@ -40,7 +40,6 @@ export default function Page() {
               One orchestrated load-in beats scattered motion.
             </p>
           </div>
-
           <div className="grid">
             <article
               className="card reveal"
