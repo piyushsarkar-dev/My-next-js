@@ -67,7 +67,6 @@ export default function Page() {
                 variables.
               </p>
             </article>
-
             <article
               className="card reveal"
               style={{ ["--d" as never]: "280ms" }}>
