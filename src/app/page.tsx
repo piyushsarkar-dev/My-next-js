@@ -27,7 +27,6 @@ export default function Page() {
           </a>
         </nav>
       </header>
-
       <main className="main">
         <AnimatedHero />
 
