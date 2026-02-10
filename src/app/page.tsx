@@ -11,6 +11,7 @@ export default function Page() {
             className="brandMark"
             aria-hidden
           />
+
           <span className="brandText">My-next-js</span>
         </div>
         <nav className="nav">
