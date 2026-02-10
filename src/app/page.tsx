@@ -110,7 +110,6 @@ export default function Page() {
           </div>
         </section>
       </main>
-
       <footer
         className="footer reveal"
         style={{ ["--d" as never]: "220ms" }}>
